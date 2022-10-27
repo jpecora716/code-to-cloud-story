@@ -29,6 +29,7 @@ resource "aws_instance" "codetocloud" {
     network_interface_id = aws_network_interface.demo_nic.id
     device_index         = 0
   }
+  depends_on = [aws_internet_gateway.gw]
 }
 
 resource "aws_vpc" "demo_vpc" {
@@ -41,6 +42,10 @@ resource "aws_vpc" "demo_vpc" {
     git_repo  = "code-to-cloud-story"
     yor_trace = "078a4a35-626e-4713-bbaf-b5e9166cfff6"
   }
+}
+
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.demo_vpc.id
 }
 
 resource "aws_subnet" "demo_subnet" {
