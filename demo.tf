@@ -46,6 +46,12 @@ resource "aws_vpc" "demo_vpc" {
 
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.demo_vpc.id
+  tags = {
+    Owner     = "Team"
+    git_org   = "jpecora716"
+    git_repo  = "code-to-cloud-story"
+    yor_trace = "ec49ed2d-bb11-45f2-8c76-e6887988d14c"
+  }
 }
 
 resource "aws_subnet" "demo_subnet" {
