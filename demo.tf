@@ -32,7 +32,7 @@ resource "aws_instance" "codetocloud" {
   depends_on = [aws_internet_gateway.gw]
 }
 
-resource "aws_instance" "codetocloud" {
+resource "aws_instance" "missingtags" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
   tags = {
